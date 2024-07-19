@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Gen</title>
+    <link rel="shortcut icon" href="https://picoapps.xyz/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Emoji Gen">
+    <meta property="og:description" content="Generate your own Emoji with a simple click">
+    <meta property="og:image" content="https://picoapps.xyz/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a.picoapps.xyz/mother-career">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://a.picoapps.xyz/mother-career">
+    <meta name="twitter:title" content="Emoji Gen">
+    <meta name="twitter:description" content="Generate your own Emoji with a simple click">
+    <meta name="twitter:image" content="https://picoapps.xyz/favicon.png">
+
+</head>
+<body class="bg-gray-100">
+    <header class="primary-color text-left py-6 px-4">
+    <center>  <h1 class="text-white font-bold text-4xl" >Emoji Generater by imagine</h1></center>  
+     <center>   <p class="text-white text-xl">Made by Harsh</p></center>
+    </header>
+
+    <main class="flex flex-col items-center mt-10">
+        <input type="text" class="border-2 border-gray-300 p-2 rounded-lg" id="promptInput" placeholder="Emoji description (keep it short)">
+
+        <div class="mt-4">
+            <button class="bg-green-500 text-white py-2 px-4 rounded mr-2 shadow-md" id="randomButton">Random</button>
+            <button class="bg-blue-500 text-white py-2 px-5 rounded mr-2 shadow-md" id="generateButton">Generate</button>
+            <button class="tertiary-color text-white py-2 px-5 rounded hidden" id="downloadButton">Download</button>
+        </div>
+        <div id="status" class="mt-4"></div>
+        <img id="generatedImage" class="mt-4 w-full" src="">
+
+        <!-- New grid section -->
+        <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4 mt-8">
+          <div class="bg-white p-4 rounded shadow-md">
+            <img src="https://pbxt.replicate.delivery/scVrE5ZDNNLcFR8CjkKeIhac0Wr9LezBQGj8rUAc8L1oqRiRA/out-0.png" alt="rocket" class="rounded sm:w-full">
+            <p class="mt-3 text-gray-600">banana man</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-md">
+            <img src="https://pbxt.replicate.delivery/dkxJjswDSP5KJtyNuIN8uj4O7f6CZeyaX5G2YHoapYEgZRiRA/out-0.png" alt="cat" class="rounded sm:w-full">
+            <p class="mt-3 text-gray-600">charles darwin</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-md">
+            <img src="https://pbxt.replicate.delivery/idJeu3i7pMUtZ6IHYjai0TQSfbijeJxpdGFz3u4PCKesnGJGB/out-0.png" alt="nyc" class="rounded sm:w-full">
+            <p class="mt-3 text-gray-600">hulk hogan</p>
+          </div>
+        </section>
+    </main>
+    <footer class="primary-color text-center py-4 mt-10">
+        <p class="text-white">Made by Harsh</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body></html>

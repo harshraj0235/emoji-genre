@@ -1,0 +1,62 @@
+
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Tektur', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+
+.primary-color {
+    background-color: #264653;
+}
+
+.secondary-color {
+    background-color: #2A9D8F;
+}
+
+.tertiary-color {
+    background-color: #E9C46A;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.spinner {
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-left-color: black;
+    border-top-color: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spinner_animation 1s linear infinite;
+}
+
+@keyframes spinner_animation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 640px) {
+  #generatedImage {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  #generatedImage {
+    max-width: 300px;
+  }
+}
+
+#promptInput {
+  width: 400px
+}
