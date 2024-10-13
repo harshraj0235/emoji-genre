@@ -1,200 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Gen</title>
-    <link rel="shortcut icon" href="https://picoapps.xyz/favicon.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Emoji Gen">
-    <meta property="og:description" content="Generate your own Emoji with a simple click">
-    <meta property="og:image" content="https://picoapps.xyz/favicon.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://a.picoapps.xyz/mother-career">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #e3e7ec);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    <!-- Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://a.picoapps.xyz/mother-career">
-    <meta name="twitter:title" content="Emoji Gen">
-    <meta name="twitter:description" content="Generate your own Emoji with a simple click">
-    <meta name="twitter:image" content="https://picoapps.xyz/favicon.png">
-<style>
-    
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
 
-@font-face {
-    font-family: 'Tektur';
-    src: url('fonts/Tektur-Regular.ttf') format('truetype');
-}
+        .container:hover {
+            transform: translateY(-5px);
+        }
 
-body {
-    font-family: 'Tektur', sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    
-}
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
 
-.primary-color {
-    background-color: #264653;
-}
+        .emoji-container {
+            margin: 20px 0;
+        }
 
-.secondary-color {
-    background-color: #2A9D8F;
-}
+        .emoji {
+            margin: 10px 0;
+            font-size: 120px;
+        }
 
-.tertiary-color {
-    background-color: #E9C46A;
-}
+        .emoji-name {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #666;
+            font-weight: bold;
+        }
 
-main {
-    flex-grow: 1;
-}
+        .feeling-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.spinner {
-    border: 5px solid rgba(0, 0, 0, 0.1);
-    border-left-color: black;
-    border-top-color: black;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spinner_animation 1s linear infinite;
-}
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-@keyframes spinner_animation {
-    to {
-        transform: rotate(360deg);
-    }
-}
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
 
-@media screen and (max-width: 640px) {
-  #generatedImage {
-    width: 100%;
-  }
-}
+        input[type="text"] {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            width: calc(100% - 26px);
+            font-size: 16px;
+            transition: border 0.3s;
+        }
 
-@media screen and (min-width: 641px) {
-  #generatedImage {
-    max-width: 300px;
-  }
-}
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
 
-#promptInput {
-  width: 400px
-}
+        .search-container {
+            margin-bottom: 20px;
+        }
 
-</style>
+        @media (max-width: 600px) {
+            .btn {
+                width: 45%;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <header class="primary-color text-left py-6 px-4">
-    <center>  <h1 class="text-white font-bold text-4xl" >Emoji Generater by imagine</h1></center>  
-     <center>   <p class="text-white text-xl">Made by Harsh</p></center>
-    </header>
 
-    <main class="flex flex-col items-center mt-10">
-        <input type="text" class="border-2 border-gray-300 p-2 rounded-lg" id="promptInput" placeholder="Emoji description (keep it short)">
-
-        <div class="mt-4">
-            <button class="bg-green-500 text-white py-2 px-4 rounded mr-2 shadow-md" id="randomButton">Random</button>
-            <button class="bg-blue-500 text-white py-2 px-5 rounded mr-2 shadow-md" id="generateButton">Generate</button>
-            <button class="tertiary-color text-white py-2 px-5 rounded hidden" id="downloadButton">Download</button>
+<body>
+    <div class="container">
+        <h1>Emoji Generator</h1>
+        <div class="emoji-container">
+            <div id="emoji" class="emoji"></div>
+            <p id="emoji-name" class="emoji-name"></p>
         </div>
-        <div id="status" class="mt-4"></div>
-        <img id="generatedImage" class="mt-4 w-full" src="">
+        <div class="search-container">
+            <input type="text" id="emoji-search" placeholder="Search for an emoji..." />
+            <button id="search-btn" class="btn">Search</button>
+        </div>
+        <button id="generate-random-btn" class="btn">Generate Random Emoji</button>
+        <button id="download-emoji-btn" class="btn" style="display: none;">Download Emoji</button>
+    </div>
 
-        <!-- New grid section -->
-        <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4 mt-8">
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/scVrE5ZDNNLcFR8CjkKeIhac0Wr9LezBQGj8rUAc8L1oqRiRA/out-0.png" alt="rocket" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">banana man</p>
-          </div>
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/dkxJjswDSP5KJtyNuIN8uj4O7f6CZeyaX5G2YHoapYEgZRiRA/out-0.png" alt="cat" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">charles darwin</p>
-          </div>
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/idJeu3i7pMUtZ6IHYjai0TQSfbijeJxpdGFz3u4PCKesnGJGB/out-0.png" alt="nyc" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">hulk hogan</p>
-          </div>
-        </section>
-    </main>
-    <footer class="primary-color text-center py-4 mt-10">
-        <p class="text-white">Made by Harsh</p>
-    </footer>
+    <div class="feeling-buttons">
+        <!-- Emotions -->
+        <button class="btn feeling-button" data-feeling="Happy">😊 Happy</button>
+        <button class="btn feeling-button" data-feeling="Sad">😢 Sad</button>
+        <button class="btn feeling-button" data-feeling="Angry">😠 Angry</button>
+        <button class="btn feeling-button" data-feeling="Excited">😃 Excited</button>
+        <button class="btn feeling-button" data-feeling="Love">😍 Love</button>
+        <button class="btn feeling-button" data-feeling="Laughing">😂 Laughing</button>
+        <button class="btn feeling-button" data-feeling="Wink">😉 Wink</button>
+        <button class="btn feeling-button" data-feeling="Confused">😕 Confused</button>
+        <button class="btn feeling-button" data-feeling="Surprised">😮 Surprised</button>
+        <button class="btn feeling-button" data-feeling="Cool">😎 Cool</button>
+
+        <!-- Animals -->
+        <button class="btn feeling-button" data-feeling="Cat">🐱 Cat</button>
+        <button class="btn feeling-button" data-feeling="Dog">🐶 Dog</button>
+        <button class="btn feeling-button" data-feeling="Lion">🦁 Lion</button>
+        <button class="btn feeling-button" data-feeling="Bear">🐻 Bear</button>
+        <button class="btn feeling-button" data-feeling="Rabbit">🐰 Rabbit</button>
+
+        <!-- Food -->
+        <button class="btn feeling-button" data-feeling="Pizza">🍕 Pizza</button>
+        <button class="btn feeling-button" data-feeling="Ice Cream">🍦 Ice Cream</button>
+        <button class="btn feeling-button" data-feeling="Sushi">🍣 Sushi</button>
+        <button class="btn feeling-button" data-feeling="Burger">🍔 Burger</button>
+        <button class="btn feeling-button" data-feeling="Cake">🎂 Cake</button>
+
+        <!-- Nature -->
+        <button class="btn feeling-button" data-feeling="Tree">🌳 Tree</button>
+        <button class="btn feeling-button" data-feeling="Sun">☀️ Sun</button>
+        <button class="btn feeling-button" data-feeling="Moon">🌙 Moon</button>
+        <button class="btn feeling-button" data-feeling="Flower">🌸 Flower</button>
+        <button class="btn feeling-button" data-feeling="Cloud">☁️ Cloud</button>
+
+        <!-- Activities -->
+        <button class="btn feeling-button" data-feeling="Running">🏃 Running</button>
+        <button class="btn feeling-button" data-feeling="Cycling">🚴 Cycling</button>
+        <button class="btn feeling-button" data-feeling="Swimming">🏊 Swimming</button>
+        <button class="btn feeling-button" data-feeling="Dancing">💃 Dancing</button>
+        <button class="btn feeling-button" data-feeling="Music">🎶 Music</button>
+    </div>
 
     <script src="script.js"></script>
     <script>
-        function showSpinner() {
-            const statusElement = document.getElementById("status");
-            statusElement.innerHTML = '<div class="spinner"></div>';
+        const emojis = {
+            Happy: "😊",
+            Sad: "😢",
+            Angry: "😠",
+            Excited: "😃",
+            Love: "😍",
+            Laughing: "😂",
+            Wink: "😉",
+            Confused: "😕",
+            Surprised: "😮",
+            Cool: "😎",
+            
+            // Animals
+            Cat: "🐱",
+            Dog: "🐶",
+            Lion: "🦁",
+            Bear: "🐻",
+            Rabbit: "🐰",
+        
+            // Food
+            Pizza: "🍕",
+            IceCream: "🍦",
+            Sushi: "🍣",
+            Burger: "🍔",
+            Cake: "🎂",
+        
+            // Nature
+            Tree: "🌳",
+            Sun: "☀️",
+            Moon: "🌙",
+            Flower: "🌸",
+            Cloud: "☁️",
+        
+            // Activities
+            Running: "🏃",
+            Cycling: "🚴",
+            Swimming: "🏊",
+            Dancing: "💃",
+            Music: "🎶",
+        };
+        
+        const emojiDiv = document.getElementById("emoji");
+        const emojiName = document.getElementById("emoji-name");
+        const downloadButton = document.getElementById("download-emoji-btn");
+        const generateRandomButton = document.getElementById("generate-random-btn");
+        
+        document.querySelectorAll(".feeling-button").forEach(button => {
+            button.addEventListener("click", () => {
+                const feeling = button.getAttribute("data-feeling");
+                generateEmoji(feeling);
+            });
+        });
+        
+        generateRandomButton.addEventListener("click", () => {
+            const randomFeeling = Object.keys(emojis)[Math.floor(Math.random() * Object.keys(emojis).length)];
+            generateEmoji(randomFeeling);
+        });
+        
+        function generateEmoji(feeling) {
+            const emoji = emojis[feeling];
+            emojiDiv.textContent = emoji;
+            emojiName.textContent = feeling;
+            downloadButton.style.display = "inline-block";
+            downloadButton.onclick = () => downloadEmoji(emoji);
         }
         
-        function hideSpinner() {
-            const statusElement = document.getElementById("status");
-            statusElement.innerHTML = '';
+        function downloadEmoji(emoji) {
+            const blob = new Blob([emoji], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "emoji.txt";
+            link.click();
         }
         
-        function displayError(message) {
-            const statusElement = document.getElementById("status");
-            statusElement.innerHTML = `<p class="text-red-500">${message}</p>`;
-        }
+        const searchBtn = document.getElementById("search-btn");
+        const emojiSearch = document.getElementById("emoji-search");
         
-        async function onGenerateButtonClick() {
-            showSpinner();
-        
-            const promptInput = document.getElementById("promptInput");
-            const promptValue = "A TOK emoji of a " + promptInput.value;
-            try {
-                const response = await fetch("https://backend.buildpicoapps.com/aero/run/image-generation-api?pk=v1-Z0FBQUFBQmxaZFRCeUd3djhOZm9EZU9oT3JxSTk4dDRTRmYtUzhKZlZXMnlvcVlhcGZHeHM3WFZLWmduUXQxcEdHbTYzaUNkaVZPUGVwUGFwVkYxTXc0dXBac1oweVc2Rnc9PQ==", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ 
-                      prompt: promptValue, 
-                      replicateModelVersion: "dee76b5afde21b0f01ed7925f0665b7e879c50ee718c5f78a9d38e04d523cc5e" })
-                });
-        
-                const data = await response.json();
-        
-                if (data.status === 'success') {
-                    const imageElement = document.getElementById("generatedImage");
-                    imageElement.src = data.imageUrl;
-                    document.getElementById("downloadButton").classList.remove("hidden");
-                } else {
-                    console.error('API error:', data);
-                    displayError('An error occurred. Please try again.');
-                }
-            } catch (error) {
-                console.error('Fetch error:', error);
-                displayError('An error occurred. Please try again.');
+        searchBtn.addEventListener("click", () => {
+            const searchTerm = emojiSearch.value.trim();
+            const feeling = Object.keys(emojis).find(key => key.toLowerCase() === searchTerm.toLowerCase());
+            if (feeling) {
+                generateEmoji(feeling);
+            } else {
+                alert("Emoji not found. Please try another one.");
             }
-        
-            hideSpinner();
-        }
-        function setRandomPrompt() {
-            const prompts = ["golden retriever", "watermelon guy", "micheal phelps", "elon musk", "cat", "obama", "michelle obama"];
-            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-            document.getElementById("promptInput").value = randomPrompt;
-        }
-        
-        function downloadImage() {
-            const imageElement = document.getElementById("generatedImage");
-            const imageUrl = imageElement.src;
-        
-            if (!imageUrl) {
-                alert("Please generate an image before downloading.");
-                return;
-            }
-        
-            window.open(imageUrl, '_blank');
-        }
-        
-        document.getElementById("generateButton").addEventListener("click", onGenerateButtonClick);
-        document.getElementById("randomButton").addEventListener("click", setRandomPrompt);
-        document.getElementById("downloadButton").addEventListener("click", downloadImage);
+        });
     </script>
+</body>
 
-</body></html>
+</html>
