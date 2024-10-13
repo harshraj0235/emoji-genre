@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="https://picoapps.xyz/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css">
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Open Graph tags -->
     <meta property="og:title" content="Emoji Gen">
     <meta property="og:description" content="Generate your own Emoji with a simple click">
@@ -21,45 +21,77 @@
     <meta name="twitter:title" content="Emoji Gen">
     <meta name="twitter:description" content="Generate your own Emoji with a simple click">
     <meta name="twitter:image" content="https://picoapps.xyz/favicon.png">
-
 </head>
 <body class="bg-gray-100">
-    <header class="primary-color text-left py-6 px-4">
-    <center>  <h1 class="text-white font-bold text-4xl" >Emoji Generater by imagine</h1></center>  
-     <center>   <p class="text-white text-xl">Made by Harsh</p></center>
+    <header class="bg-gradient-to-r from-purple-500 to-pink-500 text-left py-8 px-4 shadow-lg rounded-b-lg">
+        <center>
+            <h1 class="text-white font-extrabold text-6xl tracking-wide">✨ Emoji Generator by Imagine ✨</h1>
+            <p class="text-white text-lg italic mt-2">Crafted with love by Harsh</p>
+        </center>
     </header>
 
-    <main class="flex flex-col items-center mt-10">
-        <input type="text" class="border-2 border-gray-300 p-2 rounded-lg" id="promptInput" placeholder="Emoji description (keep it short)">
+    <!-- Navigation Menu -->
+    <nav class="bg-white p-4 shadow-md rounded-lg mt-4">
+        <ul class="flex justify-around">
+            <li><a href="#" class="text-purple-600 hover:text-purple-800 font-semibold transition duration-300">Home</a></li>
+            <li><a href="index2.html" class="text-purple-600 hover:text-purple-800 font-semibold transition duration-300" onclick="loadContent('index2.html')">AI Emoji Gen</a></li>
+            <li><a href="#" class="text-purple-600 hover:text-purple-800 font-semibold transition duration-300">About</a></li>
+            <li><a href="#" class="text-purple-600 hover:text-purple-800 font-semibold transition duration-300">FAQ</a></li>
+        </ul>
+    </nav>
 
-        <div class="mt-4">
-            <button class="bg-green-500 text-white py-2 px-4 rounded mr-2 shadow-md" id="randomButton">Random</button>
-            <button class="bg-blue-500 text-white py-2 px-5 rounded mr-2 shadow-md" id="generateButton">Generate</button>
-            <button class="tertiary-color text-white py-2 px-5 rounded hidden" id="downloadButton">Download</button>
+    <main class="flex flex-col items-center mt-10 p-4">
+        <input type="text" class="border-2 border-gray-300 p-4 rounded-lg w-full md:w-1/2 lg:w-1/3 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300" id="promptInput" placeholder="Emoji description (keep it short)">
+
+        <div class="mt-4 space-x-2">
+            <button class="bg-green-500 hover:bg-green-600 text-white py-3 px-5 rounded-lg shadow-lg transition transform hover:scale-105" id="randomButton">Random</button>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-5 rounded-lg shadow-lg transition transform hover:scale-105" id="generateButton">Generate</button>
+            <button class="bg-gray-700 hover:bg-gray-600 text-white py-3 px-5 rounded-lg shadow-lg transition hidden" id="downloadButton">Download</button>
         </div>
-        <div id="status" class="mt-4"></div>
-        <img id="generatedImage" class="mt-4 w-full" src="">
+        <div id="status" class="mt-4 text-center text-purple-600 font-semibold"></div>
+        <img id="generatedImage" class="mt-4 w-full max-w-lg rounded-lg shadow-md transition-transform duration-300" src="">
 
         <!-- New grid section -->
-        <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4 mt-8">
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/scVrE5ZDNNLcFR8CjkKeIhac0Wr9LezBQGj8rUAc8L1oqRiRA/out-0.png" alt="rocket" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">banana man</p>
-          </div>
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/dkxJjswDSP5KJtyNuIN8uj4O7f6CZeyaX5G2YHoapYEgZRiRA/out-0.png" alt="cat" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">charles darwin</p>
-          </div>
-          <div class="bg-white p-4 rounded shadow-md">
-            <img src="https://pbxt.replicate.delivery/idJeu3i7pMUtZ6IHYjai0TQSfbijeJxpdGFz3u4PCKesnGJGB/out-0.png" alt="nyc" class="rounded sm:w-full">
-            <p class="mt-3 text-gray-600">hulk hogan</p>
-          </div>
+        <section class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 w-full p-4 mt-8">
+            <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                <img src="https://pbxt.replicate.delivery/scVrE5ZDNNLcFR8CjkKeIhac0Wr9LezBQGj8rUAc8L1oqRiRA/out-0.png" alt="rocket" class="rounded w-full mb-2">
+                <p class="mt-3 text-gray-800 text-center font-semibold">Banana Man</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                <img src="https://pbxt.replicate.delivery/dkxJjswDSP5KJtyNuIN8uj4O7f6CZeyaX5G2YHoapYEgZRiRA/out-0.png" alt="cat" class="rounded w-full mb-2">
+                <p class="mt-3 text-gray-800 text-center font-semibold">Charles Darwin</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                <img src="https://pbxt.replicate.delivery/idJeu3i7pMUtZ6IHYjai0TQSfbijeJxpdGFz3u4PCKesnGJGB/out-0.png" alt="nyc" class="rounded w-full mb-2">
+                <p class="mt-3 text-gray-800 text-center font-semibold">Hulk Hogan</p>
+            </div>
         </section>
     </main>
-    <footer class="primary-color text-center py-4 mt-10">
-        <p class="text-white">Made by Harsh</p>
+
+    <!-- Content container for loading index2.html -->
+    <div id="contentContainer" class="mt-8 p-4"></div>
+
+    <footer class="bg-gradient-to-l from-purple-500 to-pink-500 text-center py-4 mt-10 shadow-lg rounded-t-lg">
+        <p class="text-white">Made with ❤️ by Harsh</p>
     </footer>
 
     <script src="script.js"></script>
-
-</body></html>
+    <script>
+        function loadContent(page) {
+            fetch(page)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(html => {
+                    document.getElementById('contentContainer').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    </script>
+</body>
+</html>
